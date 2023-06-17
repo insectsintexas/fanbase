@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+:root {
+    --box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+}
+
+section {
+    padding: 120px 0;
+}
+
+.hero {
+    background-image: url("./images/home.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1, p {
+    color: #BE9B58B7;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(30, 30, 30, 0.3);
+    z-index: -1;
+}
+
+/* shop section */
+.card-effect {
+    box-shadow: var(--box-shadow);
+    padding: 25px;
+}
+
+.item_img {
+    align-items: right;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 50px;
+}
