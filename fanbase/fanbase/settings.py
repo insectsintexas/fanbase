@@ -52,6 +52,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': ['django.templatetags.static'], 
         },
     },
 ]
@@ -106,7 +107,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# ログアウト後のリダイレクト先
+LOGOUT_REDIRECT_URL = '/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

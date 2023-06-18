@@ -1,195 +1,161 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ja">
+{% extends 'app/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Something official</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
+{% block content %}
+<!-- hero section -->
+<div class="hero vh-100 d-flex align-items-center" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <h1>You are already one of us, aren't you</h1>
+                <p>オフィシャルサイトへようこそ</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <h2>INSECTS in TEXAS</h2>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<!-- information section -->
+<section id="info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 mx-auto text-center">
+                <h6 class="text-primary">What's new</h6>
+                <h4 class="mb-4">new information</h4>
 
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                <a class="nav-link" href="#">ABOUT US</a>
-              </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#info">WHAT'S NEW</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#video">VIDEO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#shop">SHOP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#member">MEMBERSHIP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
-                    </li>
-                    <button class="btn btn-outline-secondary ms-3">Sign in</button>
-                </ul>
+                <div class="articles text-left">
+                    {% for post in posts %}
+                    <div class="article_title mb-4 text-left">
+                        <small>{{post.posted_date}}: </small>
+                        <a href="{% url 'post_detail' post.slug %}">{{post.title}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
 
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- hero section -->
-    <div class="hero vh-100 d-flex align-items-center" id="home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 mx-auto">
-                    <h1>You are already one of us, aren't you</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia aliquid mollitia.</p>
+<!-- video section -->
+<section id="video">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h6 class="text-primary">VIDEO</h6>
+                <h4>Watch our peformance</h4>
+                <div class="youtube">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vycDmELfVF4"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- information section -->
-    <section id="info">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <h6 class="text-primary">What's new</h6>
-                    <h4>so far so good</h4>
-                    
-                </div>
+<!-- shop section -->
+<section id="shop">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-8 mx-auto text-center">
+                <h6 class="text-primary">SHOP</h6>
+                <h4>new arrivals</h4>
+                <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad!</p> -->
             </div>
         </div>
-    </section>
 
-    <!-- video section -->
-    <section id="video">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto text-center">
-                    <h6 class="text-primary">VIDEO</h6>
-                    <h4>Watch our peformance</h4>
-                    
+        <div class="row g-4">
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <a href="https://www.amazon.co.jp/" class="item_name">1st album (physical) : "binary love"</a>
+                    <h6 class="price">¥1,300 +tax</h6>
+                    <img class="item_img text-right" src="{% static 'images/artwork1.jpg' %}" width="200" height="200">
                 </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <a href="https://www.amazon.co.jp/" class="item_name">2nd album (physical) : "blue eyes"</a>
+                    <h6 class="price">¥1,300 +tax</h6>
+                    <img class="item_img text-right" src="{% static 'images/artwork2.jpg' %}" width="200" height="200">
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <a href="https://www.amazon.co.jp/" class="item_name">baseball cap</a>
+                    <h6 class="price">¥5,000 +tax</h6>
+                    <img class="item_img text-right" src="{% static 'images/baseballcap.jpg' %}" width="200"
+                        height="200">
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <a href="https://www.amazon.co.jp/" class="item_name">iPhone cover</a>
+                    <h6 class="price">¥4,000 +tax</h6>
+                    <img class="item_img text-right" src="{% static 'images/cover.jpeg' %}" width="160" height="200">
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <h5 class="item_name">item name</h5>
+                    <h6 class="price">price</h6>
+                    <img class="item_img text-right" src="{% static 'images/podcase.webp' %}" width="200" height="200">
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="items card-effect">
+                    <h5 class="item_name">item name</h5>
+                    <h6 class="price">price</h6>
+                    <p>please wait for more items</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- membership section -->
+<section id="member">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center mt-5">
+                <h6 class="text-primary">Membership</h6>
+                <h4 class="mb-4">connections is what we are all about</h4>
+                <button class="btn btn-outline-primary ms-3" onclick="location.href='/signup'">Sign
+                    up</button>
+                <button class="btn btn-outline-secondary ms-3" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Sign in</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-        <!-- shop section -->
-        <section id="shop">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 mx-auto text-center">
-                        <h6 class="text-primary">SHOP</h6>
-                        <h4>new arrivals</h4>
-                        <!-- <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad!</p> -->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">1st album (physical) : "binary love"</h5>
-                            <h6 class="price">¥1,300 +tax</h6>
-                            <img class="item_img text-right" src="{% static 'images/artwork1.jpg' %}" width="200"
-                                height="200">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">2nd album (physical) : "blue eyes"</h5>
-                            <h6 class="price">¥1,300 +tax</h6>
-                            <img class="item_img text-right" src="{% static 'images/artwork2.jpg' %}" width="200"
-                                height="200">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">cap</h5>
-                            <h6 class="price">¥5,000 +tax</h6>
-                            <img class="item_img text-right" src="{% static 'images/baseballcap.jpg' %}" width="200"
-                                height="200">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">iPhone cover</h5>
-                            <h6 class="price">¥4,000 +tax</h6>
-                            <img class="item_img text-right" src="{% static 'images/cover.jpeg' %}" width="160"
-                                height="200">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">item name</h5>
-                            <h6 class="price">price</h6>
-                            <img class="item_img text-right" src="{% static 'images/podcase.webp' %}" width="200"
-                                height="200">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="items card-effect">
-                            <h5 class="item_name">item name</h5>
-                            <h6 class="price">price</h6>
-                            <!-- <img class="item_img text-right" src="{% static '' %}" width="200"
-                                height="200"> -->
-                            <p>please wait for more items</p>
-                        </div>
-                    </div>
-
-                </div>
+<!-- contact section -->
+<section id="contact">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-8 mx-auto text-center">
+                <h6 class="text-primary">Contact</h6>
+                <h4>Ask anythinng</h4>
             </div>
-        </section>
+        </div>
 
-        <!-- membership section -->
-        <section id="member">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 mx-auto text-center">
-                        <h6 class="text-primary">Membership</h6>
-                        <h4>all we need is connections</h4>
-                        
-                    </div>
-                </div>
+        <form action="" class="row g-3 justify-content-center mx-auto">
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="お名前">
             </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 mx-auto text-center">
-                        <h6 class="text-primary">Contact</h6>
-                        <h4>Get in touch</h4>
-                        
-                    </div>
-                </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control" placeholder="メールアドレス">
             </div>
-        </section>
+            <div class="col-md-10">
+                <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="お問い合わせ内容"></textarea>
+            </div>
+            <div class="col-md-10 d-grid">
+                <button class="btn btn-primary">Contact</button>
+            </div>
+        </form>
+    </div>
+</section>
 
-        <footer class="container">all rights reserved</footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock %}
