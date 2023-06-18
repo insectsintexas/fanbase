@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render,redirect
 from .models import Post
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404
 
@@ -11,11 +12,12 @@ def frontpage(request):
     posts = Post.objects.all().order_by('-posted_date')
     return render(request,"app/index.html", {"posts":posts}) 
 
+@login_required(login_url='/login/')  # ログインが必要なビューにデコレータを追加
 def post_detail(request, slug):
-    # post = Post.objects.get(slug=slug)
-    # return render(request, "app/post_detail.html" ,{"post":post })
-
     post = get_object_or_404(Post, slug=slug)
+    # ログインが必要な記事かどうかのチェック
+    if post.is_private and not request.user.is_authenticated:
+        return redirect('/login/')  # ログインページにリダイレクト
     return render(request, "app/post_detail.html", {"post": post})
 
 # ユーザー新規登録（sign up）
