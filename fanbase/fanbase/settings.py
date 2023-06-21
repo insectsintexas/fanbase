@@ -19,13 +19,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    
 ]
 
 MIDDLEWARE = [
@@ -107,8 +108,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# ログアウト後のリダイレクト先
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/pdfmr/top' # ログイン後のリダイレクト先
+
+LOGOUT_REDIRECT_URL = '/' # ログアウト後のリダイレクト先
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

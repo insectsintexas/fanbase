@@ -1,12 +1,10 @@
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render,redirect
-from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import render,redirect
 from django.shortcuts import get_object_or_404
-
+from .models import Post
 
 def frontpage(request):
     posts = Post.objects.all().order_by('-posted_date')
