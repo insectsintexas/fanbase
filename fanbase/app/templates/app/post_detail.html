@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<section class="post">
+    <div class="container">
+        <div class="articles">
+            <h5 class="article_title mb-2">{{post.title}}</h5>
+            <small class="mb-5">{{post.posted_date}}: </small>
+
+            <!-- {% if post.is_private and not user.is_authenticated %} -->
+            <!-- 会員限定メッセージの表示 -->
+            <!-- <p>会員限定記事になりますので、閲覧できません。</p> -->
+
+            <!-- {% else %} -->
+            <!-- 記事本文の表示 -->
+            <p class="mt-5 mb-5"></p>{{post.body | linebreaksbr}}</p>
+            <!-- {% endif %} -->
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

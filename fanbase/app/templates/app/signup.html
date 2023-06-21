@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<section>
+    <div class="container mx-auto">
+        <h1 class="text-center mb-3">ユーザー登録</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" action="{% url 'signup' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">ユーザー名:</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">メールアドレス:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">パスワード:</label>
+                        <input type="password" id="password1" name="password1" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">パスワード（確認）:</label>
+                        <input type="password" id="password2" name="password2" class="form-control" required>
+                    </div>
+
+                    <div class="text-center">
+                        <input type="submit" value="登録" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>Ï
+</section>
+{% endblock %}
